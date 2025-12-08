@@ -1,32 +1,27 @@
 # Lx => -x
 # Rx => +x
-
 max_number = 100
 
 
-def get_file_lines(file_path):
-    with open(file_path, "r") as file:
-        return file.read().splitlines()
-
-
-def count_rotation(x: int):
-    rotations = 0
-    lines = get_file_lines("input.txt")
+def find_password(dial: int):
+    password = 0
+    lines = open("input.txt", "r").read().splitlines()
     for _, line in enumerate(lines):
-        line = line[:1], line[1:]
-        if line[0] == "L":
-            x = (x - int(line[1])) % max_number
-        else:
-            x = (x + int(line[1])) % max_number
+        delta = int(line.replace("L", "-").replace("R", ""))
+        old_dial = dial
+        dial = (dial + delta) % 100
+        print(old_dial, delta, dial)
+        if dial == 0 :
+            password += 1
+            # if old_dial == 0:
+            #     password -= 1
+            print(password)
 
-        if x == 0:
-            rotations += 1
-    return rotations
+    return password
 
 
 def main():
-    x = 50
-    print(count_rotation(x))
+    print(find_password(50))
 
 
 if __name__ == "__main__":
