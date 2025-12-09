@@ -11,6 +11,13 @@ def main():
             dial = dial - delta
         else:
             dial = dial + delta
+        print(delta, dial)
+        if dial > 99:
+            count2 += dial // 100
+        if dial < 1:
+            count2 += ((old_dial - 1) // 100) - ((dial - 1) // 100)
+        dial = dial % 100
+        print(count2)
         if dial == 0:
             count1 = count1 + 1
     file.close()
