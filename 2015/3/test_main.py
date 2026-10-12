@@ -1,18 +1,9 @@
 from unittest import TestCase
 
-from main import define_next_coordinates, Santa
-
-
-def create_santa_instance():
-    santa = Santa(0, 0)
-    assert santa.x == 0
-    assert santa.x == 0
+from main import define_next_coordinates, discover
 
 
 class Test(TestCase):
-
-    def test_returns_to_origin(self):
-        assert define_next_coordinates("^>v<") == (0, 0)
 
     def test_go_up(self):
         assert define_next_coordinates("^") == (0, 1)
@@ -25,3 +16,18 @@ class Test(TestCase):
 
     def test_go_right(self):
         assert define_next_coordinates(">") == (1, 0)
+
+    def test_discover_2_houses(self):
+        assert discover("^") == 2
+
+    def test_discover_3_houses(self):
+        assert discover("^>") == 3
+
+    def test_discover_4_houses(self):
+        assert discover("^>v") == 4
+
+    def test_discover_return_to_origin(self):
+        assert discover("^>v<") == 4
+
+    def test_2_houses(self):
+        assert discover("^v^v^v^v^v") == 2

@@ -1,8 +1,4 @@
-class Santa:
-    def __init__(self, x: int = 0, y: int = 0):
-        self.x = x
-        self.y = y
-
+# B(xB,yB)=(xA+xAB,yA+yAB),où xAB et yAB sont les coordonnées du vecteur.
 
 def define_next_coordinates(direction: str):
     x = 0
@@ -23,8 +19,22 @@ def get_file_content(file_path: str = "input.txt"):
         return file.read()
 
 
+def discover(content: str):
+    santa_position = (0, 0)
+    positions = [santa_position]
+    for character in content:
+        x, y = define_next_coordinates(character)
+        santa_position = (santa_position[0] + x, santa_position[1] + y)
+        positions.append(santa_position)
+    return len(set(positions))
+
+
 def main():
-    define_directions()
+    # content = get_file_content("test.txt")
+    # content = get_file_content()
+    content = "^>v<"
+    # print(discover(content))
+    return discover(content)
 
 
 if __name__ == "__main__":
