@@ -30,10 +30,8 @@ def discover(content: str):
 
 
 def main():
-    # content = get_file_content("test.txt")
-    # content = get_file_content()
-    content = "^>v<"
-    # print(discover(content))
+    content = get_file_content()
+    print(discover(content))
     return discover(content)
 
 

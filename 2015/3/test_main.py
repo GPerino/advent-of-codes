@@ -25,3 +25,9 @@ class Test(TestCase):
 
     def test_2_houses(self):
         assert discover("^v^v^v^v^v") == 2
+
+    def test_test_file(self):
+        assert discover(">^^v^<>v<<<v<v^>>v^") == 13
+
+    def test_7_come_and_go_houses(self):
+        assert discover("^><>v><>v<") == 7
