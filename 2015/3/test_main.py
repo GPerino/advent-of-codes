@@ -17,11 +17,11 @@ class Test(TestCase):
     def test_go_right(self):
         assert define_next_coordinates(">") == (1, 0)
 
-    def test_discover_2_houses(self):
+    def test_discover_3_houses(self):
         assert discover("^v") == 3
 
-    def test_discover_4_distinct_houses(self):
+    def test_discover_3_distinct_houses(self):
         assert discover("^>v<") == 3
 
-    def test_2_houses(self):
+    def test_11_houses(self):
         assert discover("^v^v^v^v^v") == 11

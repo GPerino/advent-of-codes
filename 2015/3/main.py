@@ -23,11 +23,16 @@ def discover(content: str):
     santa_position = (0, 0)
     bot_position = (0, 0)
     positions = [santa_position]
-    for character in content:
+    # for character in content:
+    for i in range(len(content)):
+        character = content[i]
         x, y = define_next_coordinates(character)
-        santa_position = (santa_position[0] + x, santa_position[1] + y)
-        bot_position = (bot_position[0] + x, bot_position[1] + y)
+        if i % 2 == 0:
+            santa_position = (santa_position[0] + x, santa_position[1] + y)
+        else:
+            bot_position = (bot_position[0] + x, bot_position[1] + y)
         positions.append(santa_position)
+        positions.append(bot_position)
     return len(set(positions))
 
 
