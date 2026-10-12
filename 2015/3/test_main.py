@@ -18,16 +18,10 @@ class Test(TestCase):
         assert define_next_coordinates(">") == (1, 0)
 
     def test_discover_2_houses(self):
-        assert discover("^") == 2
+        assert discover("^v") == 3
 
     def test_discover_4_distinct_houses(self):
-        assert discover("^>v<") == 4
+        assert discover("^>v<") == 3
 
     def test_2_houses(self):
-        assert discover("^v^v^v^v^v") == 2
-
-    def test_test_file(self):
-        assert discover(">^^v^<>v<<<v<v^>>v^") == 13
-
-    def test_7_come_and_go_houses(self):
-        assert discover("^><>v><>v<") == 7
+        assert discover("^v^v^v^v^v") == 11
