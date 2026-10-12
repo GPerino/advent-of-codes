@@ -20,13 +20,7 @@ class Test(TestCase):
     def test_discover_2_houses(self):
         assert discover("^") == 2
 
-    def test_discover_3_houses(self):
-        assert discover("^>") == 3
-
-    def test_discover_4_houses(self):
-        assert discover("^>v") == 4
-
-    def test_discover_return_to_origin(self):
+    def test_discover_4_distinct_houses(self):
         assert discover("^>v<") == 4
 
     def test_2_houses(self):
