@@ -1,15 +1,16 @@
 import hashlib
+from itertools import count
 
 
 def find_lowest_number_from_secret(content: str) -> int:
-    i = 0
-    while i < 10000000:
+    i = 1
+    iterator = count(i, 1)
+    for i in iterator:
         secret = content + str(i)
         render_string = calculate_hash(secret)
         if render_string.startswith("00000"):
             break
-        else:
-            i += 1
+        i += 1
     return i
 
 
@@ -19,8 +20,9 @@ def calculate_hash(content: str) -> str:
 
 
 def main() -> int:
+    secret = "abcdef"
     # secret = "pqrstuv"
-    secret = "yzbqklnj"
+    # secret = "yzbqklnj"
     number = find_lowest_number_from_secret(secret)
     print(calculate_hash(secret + str(number)))
     print(number)
