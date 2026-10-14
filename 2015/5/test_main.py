@@ -6,12 +6,10 @@ from main import check_character, check_double_letter, check_vowels_in_line, che
 class Test(TestCase):
 
     def test_naughty_string(self):
-        assert check_character("jchzalrnumimnmhp") == False  # no double letter
-        assert check_character("haegwjzuvuyypxyu") == False  # contains "xy"
-        assert check_character("dvszwmarrgswjxmb") == False  # one vowel
-        assert check_character("zettygjpcoedwyio") == True
-        assert check_character("mayoqiswqqryvqdi") == True
-        assert check_character("aaa") == True
+        assert check_character("qjhvhtzxzqqjkmpb") == True  # pair appears twice + repeats letter
+        assert check_character("xxyxx") == True  # corresponding twice rules
+        assert check_character("uurcxstgmygtbstg") == False  # one pair only
+        assert check_character("ieodomkazucvgmuy") == False  # no repeated # letter
 
     def test_must_contains_double_letter(self):
         assert check_double_letter("ddertyuiop") == True  # start of string
