@@ -14,12 +14,12 @@ def check_vowels_in_line(line: str) -> bool:
 
 def check_double_letter(line: str) -> bool:
     for i in range(len(line) - 1):
-        if line[i] == line[i - 1] or line[i] == line[i + 1]:
+        if line[i] == line[i + 1]:
             return True
     return False
 
 
-def check_contains_prohibited_string(line: str) -> bool:
+def check_not_contains_prohibited_string(line: str) -> bool:
     string_to_avoid = ["ab", "cd", "pq", "xy"]
     res = [ele for ele in string_to_avoid if (ele in line)]
     if len(res) >= 1:
@@ -29,7 +29,7 @@ def check_contains_prohibited_string(line: str) -> bool:
 
 
 def check_character(line: str) -> bool:
-    prohibited_string = check_contains_prohibited_string(line)
+    prohibited_string = check_not_contains_prohibited_string(line)
     vowels = check_vowels_in_line(line)
     double_letter = check_double_letter(line)
     if double_letter and vowels and prohibited_string:
@@ -45,8 +45,7 @@ def main() -> int:
         result = check_character(line)
         if result:
             nice_string += 1
-            print(nice_string)
-        print(line)
+    print(nice_string)
     return nice_string
 
 
