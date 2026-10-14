@@ -1,30 +1,31 @@
+from collections import Counter
+
+
 def get_file_content(file_path: str = "input.txt") -> str:
     with open(file_path, "r") as file:
         return file.read()
 
 
 def check_double_pair(line: str) -> bool:
-    pair = 0
     double = []
     for i in range(len(line) - 1):
-        if line[i] == line[i + 1]:
-            double.extend([i, i + 1])
-            pair += 1
-    if pair >= 2 and len(double) != len(set(double)):
-        return False
-    return True
+        double.append(line[i] + line[i + 1])
+    count = Counter(double)
+    for i in range(len(double) - 1):
+        if count[double[i]] >= 2:
+            if double[i] != double[i + 1]:
+                return True
+    return False
 
 
 def check_contains_repeated_letter(line: str) -> bool:
-    for i in range(len(line) - 1):
-        if line[i] != line[i + 1]:
-            return True
-    return False
+    return True
 
 
 def check_character(line: str) -> bool:
     repeated_letter = check_contains_repeated_letter(line)
     double_pair = check_double_pair(line)
+    print(repeated_letter, double_pair)
     if double_pair and repeated_letter:
         return True
     return False

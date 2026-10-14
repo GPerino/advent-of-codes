@@ -12,6 +12,8 @@ class Test(TestCase):
 
     def test_must_contains_double_pair(self):
         assert check_double_pair("aabcdefgaa") == True
+        assert check_character("qjhvhtzxzqqjkmpb") == True
+        assert check_character("xxyxx") == True
         assert check_double_pair("aabaa") == True
         assert check_double_pair("aaa") == False  # overlap
 
